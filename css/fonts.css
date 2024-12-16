@@ -1,0 +1,8 @@
+/* Baloo Bhaijaan Regular Font*/
+@font-face {
+    font-family: 'BalooBhaijann';
+    src: url('../fonts/baloobhaijaan-regular-webfont.woff2') format('woff2'),
+         url('../fonts/baloobhaijaan-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
