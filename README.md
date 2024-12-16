@@ -1,3 +1,3 @@
 # LiftCoinDev Website
 
-This is the repository for the LiftCoinDev website, hosted on [GitHub Pages](https://liftcoindev.github.io).
+This is the repository for the Lift Coin official website, hosted on [GitHub Pages](https://liftcoindev.github.io).
