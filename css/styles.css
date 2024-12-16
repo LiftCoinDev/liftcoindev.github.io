@@ -38,7 +38,7 @@ header {
 
 /* Spacing, layout and responsive sections */
 .header-container {
-  background-image: url('/images/hero-bg1x.png');
+  background-image: url('/images/hero-bg@1x.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
