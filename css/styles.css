@@ -626,17 +626,35 @@ Connect
 }
 
 .icon-row {
-  display: flex;
-  flex-direction: row;
+  display: grid;
   align-items: center;
   justify-content: center;
   gap: 28px;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(2,166px);
 }
 
 @media (min-width: 480px) {
   .icon-row  {
-    gap: 64px;
+    row-gap: 64px;
+    column-gap: 64px;
+
+  }
+}
+
+@media (min-width: 640px) {
+  .icon-row  {
+    row-gap: 64px;
+    column-gap: 108px;
+
+  }
+}
+
+@media (min-width: 880px) {
+  .icon-row  {
+    grid-template-columns: repeat(4, 166px);
+    row-gap: 64px;
+    column-gap: 64px;
+
   }
 }
 
