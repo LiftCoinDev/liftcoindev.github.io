@@ -537,21 +537,21 @@ only screen and (                min-resolution: 2dppx) {
 }
 
 /*
-Socials
+Connect
 */
 
-.socials-section {
+.connect-section {
   background-color: #6A5438;
   display: flex;
   flex-direction: column;
 }
 
-.socials-section .container {
+.connect-section .container {
   gap: 56px;
   padding-bottom: 48px;
 }
 
-.socials-section h2 {
+.connect-section h2 {
   text-align: center;
   font-size: 4rem;
   letter-spacing: 2px;
@@ -560,7 +560,7 @@ Socials
   text-shadow: 2px 2px rgba(0,0,0,0.9);
 }
 
-.socials-section h3 {
+.connect-section h3 {
   text-align: center;
   font-size: 1.6rem;
   letter-spacing: 1px;
@@ -568,7 +568,7 @@ Socials
   text-shadow: 2px 2px rgba(0,0,0,0.5);
 }
 
-.socials-section h4 {
+.connect-section h4 {
   text-align: center;
   font-size: 1.4rem;
   letter-spacing: 1px;
@@ -579,7 +579,7 @@ Socials
 }
 
 @media (min-width: 640px) {
-  .socials-section h3 {
+  .connect-section h3 {
     font-size: 1.8rem;
   }
 }
@@ -627,7 +627,7 @@ Socials
 
 }
 
-.social-icon {
+.connect-icon {
   width: 50%;
   height: 50%;
 }
@@ -636,11 +636,11 @@ Socials
   transform: translateX(-4px);
 }
 
-.socials-section a {
+.connect-section a {
   text-decoration: none;
 }
 
-.socials-section a:hover {
+.connect-section a:hover {
   color: #ffcb70;
   cursor: pointer;
   text-decoration: underline;
