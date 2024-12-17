@@ -201,7 +201,7 @@ nav a:hover {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding-bottom: 36px;
+  padding-bottom: 64px;
 }
 
 @media (min-width: 480px) {
