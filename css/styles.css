@@ -44,7 +44,7 @@ header {
   background-position: center;
   
   background-color: #111;
-  height: 920px;
+  height: 100vh;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -53,8 +53,8 @@ header {
 .container {
   display: flex;
   flex-direction: column;
-  gap: 72px;
-  padding-top: 72px;
+  gap: 48px;
+  padding-top: 48px;
   padding-bottom: 72px;
   padding-left: 20px;
   padding-right: 20px;
@@ -88,6 +88,16 @@ only screen and (                min-resolution: 2dppx) {
     background-image: url('/images/hero-bg@2x.png');
   }
 
+}
+
+@media (min-width: 480px) {
+  .header-container {
+    height: 920px;
+  }
+  .container {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -133,7 +143,7 @@ nav ul {
   flex: 1;
   justify-content: space-around;
   flex-direction: row;
-  gap: 24px;
+  gap: 18px;
 }
 
 @media (min-width: 600px) {
@@ -143,13 +153,20 @@ nav ul {
   }
 }
 
+
 nav ul li {
   list-style-type: none;
 }
 
 nav a {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   text-decoration: none;
+}
+
+@media (min-width: 480px) {
+  nav a {
+    font-size: 1.5rem;
+  }
 }
 
 nav a:hover {
@@ -184,8 +201,15 @@ nav a:hover {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding-bottom: 72px;
+  padding-bottom: 36px;
 }
+
+@media (min-width: 480px) {
+  .hero-content {
+    padding-bottom: 72px;
+  }
+}
+
 
 .logobug {
   display: none; 
@@ -227,12 +251,18 @@ nav a:hover {
   color: rgba(255,255,255,0.95);
   padding-top: 12px;
   max-width: 768px;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   text-align: center;
   letter-spacing: 2px;
   line-height: 1.1;
   text-shadow: 
     0px 4px 8px rgba(0,0,0,0.9);
+}
+
+@media (min-width: 480px) {
+  .hero-content h2 {
+    font-size: 2.2rem;
+  }
 }
 
 .buynow-btn {
@@ -363,9 +393,15 @@ ABOUT
 }
 
 .rounded-box h3 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   text-transform: uppercase;
   letter-spacing: 1.6px;
+}
+
+@media (min-width: 480px) {
+  .rounded-box h3  {
+    font-size: 1.8rem;
+  }
 }
 
 .rounded-box p {
@@ -442,6 +478,7 @@ only screen and (                min-resolution: 2dppx) {
   font-size: 2.8rem;
   letter-spacing: 2px;
   padding-bottom: 32px;
+  text-wrap: auto;
 }
 
 .details-section a {
@@ -553,7 +590,7 @@ Connect
 
 .connect-section h2 {
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
   letter-spacing: 2px;
   line-height: 1.1;
   padding-bottom: 24px;
@@ -563,19 +600,23 @@ Connect
 .connect-section h3 {
   text-align: center;
   font-size: 1.6rem;
-  letter-spacing: 1px;
-  line-height: 1.1;
-  text-shadow: 2px 2px rgba(0,0,0,0.5);
+  letter-spacing: 2px;
+  line-height: 1.25;
 }
 
 .connect-section h4 {
   text-align: center;
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-  line-height: 1.2;
-  text-shadow: 2px 2px rgba(0,0,0,0.5);
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  line-height: 1.25;
   padding-top: 24px;
   padding-bottom: 36px;
+}
+
+@media (min-width: 480px) {
+  .connect-section h2 {
+    font-size: 3.6rem;
+  }
 }
 
 @media (min-width: 640px) {
@@ -589,8 +630,14 @@ Connect
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 64px;
+  gap: 28px;
   flex-wrap: wrap;
+}
+
+@media (min-width: 480px) {
+  .icon-row  {
+    gap: 64px;
+  }
 }
 
 .icon-container {
@@ -605,18 +652,32 @@ Connect
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   background-color: #F3D198;
   border-radius: 50%;
 }
 
+@media (min-width: 480px) {
+  .icon-circle {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+
 .icon-title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #F3D198;
   letter-spacing: 1px;
   line-height: 1;
   text-shadow: 0 2px rgba(0,0,0,0.9);
+}
+
+@media (min-width: 480px) {
+  .icon-title {
+    font-size: 2rem;
+  }
 }
 
 .icon-subtitle {
@@ -653,17 +714,33 @@ Connect
   align-items: center;
   justify-content: center;
   column-gap: 48px;
-  row-gap: 24px;
+  row-gap: 32px;
   flex-wrap: wrap;
 }
 
+@media (min-width: 480px) {
+  .footer-container  {
+    text-align: left;
+  }
+}
+
 .tool-icon {
-  height: 40px;
+  height: 60px;
   width: auto;
 }
 
 .solscan-logo {
-  height: 32px;
+  height: 36px;
+}
+
+.dexscreener-logo {
+  transform: translateY(-6px);
+}
+
+@media (min-width: 480px) {
+  .dexscreener-logo  {
+    transform: translateY(0px);
+  }
 }
 
 footer {
