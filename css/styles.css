@@ -41,11 +41,12 @@ header {
   background-image: url('/images/hero-bg@1x.png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position-x: center;
+  background-position-y: top;
   
   background-color: #111;
   height: 100vh;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -85,9 +86,14 @@ only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) { 
 
   .header-container {
-    background-image: url('/images/hero-bg@2x.png');
+    background-image: url('/images/hero-bg@2x.png'); 
   }
+}
 
+@media (min-width: 380px) {
+  .header-container {
+    padding: 20px;
+  }
 }
 
 @media (min-width: 480px) {
@@ -156,6 +162,8 @@ nav ul {
 
 nav ul li {
   list-style-type: none;
+  line-height: 1;
+  text-align: center;
 }
 
 nav a {
@@ -288,7 +296,16 @@ nav a:hover {
   height: 24px;
   fill: #FFF;
   transform: translateY(4px);
+  display: none;
 }
+
+@media (min-width: 380px) {
+  .svg-icon-buynow {
+    display: inline-flex;
+  }
+}
+
+
 
 /* Media Query for Larger Screens */
 @media (min-width: 860px) {
@@ -308,10 +325,16 @@ ABOUT
 }
 
 .about-section h2 {
-  font-size: 2.8rem;
+  font-size: 2rem;
   letter-spacing: 2px;
   line-height: 1;
   padding-bottom: 12px;
+}
+
+@media (min-width: 380px) {
+  .about-section h2 {
+    font-size: 2.8rem;
+  }
 }
 
 .about-section p {
@@ -325,6 +348,12 @@ ABOUT
   font-size: 1.4rem;
   white-space: nowrap;
   text-decoration: none;
+}
+
+@media (max-width: 280px) {
+  .about-section a {
+    white-space: wrap;
+  }
 }
 
 .about-section a:hover {
@@ -396,6 +425,7 @@ ABOUT
   font-size: 1.6rem;
   text-transform: uppercase;
   letter-spacing: 1.6px;
+  text-align: center;
 }
 
 @media (min-width: 480px) {
@@ -451,7 +481,13 @@ Details
   background-color: #111;
   display: flex;
   flex-direction: column;
-  padding-bottom: 240px;
+  padding-bottom: 120px;
+}
+
+@media (min-width: 280px) {
+  .details-section {
+    padding-bottom: 240px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -475,11 +511,18 @@ only screen and (                min-resolution: 2dppx) {
 }
 
 .details-section h2 {
-  font-size: 2.8rem;
+  font-size: 2rem;
   letter-spacing: 2px;
   padding-bottom: 32px;
   text-wrap: auto;
 }
+
+@media (min-width: 380px) {
+  .details-section h2 {
+    font-size: 2.8rem;
+  }
+}
+
 
 .details-section a {
   text-decoration: none;
@@ -521,10 +564,19 @@ only screen and (                min-resolution: 2dppx) {
 
 .step {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 16px;
   align-items: center;
+  text-align: center;
 }
+
+@media (min-width: 380px) {
+  .step {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
 
 .step-number {
   z-index: 2;
@@ -590,23 +642,25 @@ Connect
 
 .connect-section h2 {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
   letter-spacing: 2px;
   line-height: 1.1;
   padding-bottom: 24px;
   text-shadow: 2px 2px rgba(0,0,0,0.9);
 }
 
+
+
 .connect-section h3 {
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   letter-spacing: 2px;
   line-height: 1.25;
 }
 
 .connect-section h4 {
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   letter-spacing: 2px;
   line-height: 1.25;
   padding-top: 24px;
@@ -616,6 +670,12 @@ Connect
 @media (min-width: 480px) {
   .connect-section h2 {
     font-size: 3.6rem;
+  }
+  .connect-section h3 {
+    font-size: 1.6rem;
+  }
+  .connect-section h4 {
+    font-size: 1.6rem;
   }
 }
 
@@ -630,9 +690,14 @@ Connect
   align-items: center;
   justify-content: center;
   gap: 28px;
-  grid-template-columns: repeat(2,166px);
+  grid-template-columns: 166px;
 }
 
+@media (min-width: 380px) {
+  .icon-row  {
+    grid-template-columns: repeat(2,166px);
+  }
+}
 @media (min-width: 480px) {
   .icon-row  {
     row-gap: 64px;
@@ -640,6 +705,8 @@ Connect
 
   }
 }
+
+
 
 @media (min-width: 640px) {
   .icon-row  {
@@ -773,5 +840,18 @@ footer {
 @media (min-width: 640px) {
   .footer-container  {
     text-align: left;
+  }
+}
+
+/* Adjustments for SVG borders for tiny screens */
+@media (max-width: 380px) {
+  .divider-bottom-hero {
+    bottom: -1px;
+  }
+  .divider-top-details {
+    top: -1px;
+  }
+  .divider-bottom-details {
+    bottom: -1px;
   }
 }
