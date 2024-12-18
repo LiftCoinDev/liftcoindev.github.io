@@ -105,8 +105,8 @@
           </div>
         </div>
         <div class="chart-container">
-          <h2>Live Chart</h2>
-          <p class="roboto-light">Analytics provided by <a
+          <h2>Live Analytics</h2>
+          <p class="roboto-light">Data provided by <a
               href="https://dexscreener.com/solana/3k9rjeo5vjnb42swjy8iuqoan99igld45cfmtkmnsq6n" target="_blank"
               rel="noopener noreferrer">Dexscreener</a></p>
           <div id="dexscreener-embed"><iframe
@@ -240,6 +240,42 @@
       <div class="roboto-bold">Copyright &copy; LIFTCOIN 2025. All rights reserved</div>
     </div>
   </footer>
+
+  <script>
+    function debounce(func, delay) {
+      let timeout;
+      return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+      };
+    }
+
+    function updateIframeForSmallScreens(screenWidthThreshold, mobileUrl, desktopUrl) {
+      const iframeContainer = document.getElementById('dexscreener-embed');
+      const iframe = iframeContainer ? iframeContainer.querySelector('iframe') : null;
+      if (iframe) {
+        if (window.innerWidth < screenWidthThreshold && iframe.src !== mobileUrl) {
+          iframe.src = mobileUrl;
+        } else if (window.innerWidth >= screenWidthThreshold && iframe.src !== desktopUrl) {
+          iframe.src = desktopUrl;
+        }
+      }
+    }
+
+    // Configuration variables
+    const debounceDelay = 200;
+    const desktopUrl = 'https://dexscreener.com/solana/3K9RjEo5vjnb42SWJY8iuqoaN99igLD45cFMtkMnsQ6N?embed=1&loadChartSettings=0&trades=0&tabs=0&info=1&chartLeftToolbar=0&chartTimeframesToolbar=0&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15';
+    const mobileUrl = 'https://dexscreener.com/solana/3K9RjEo5vjnb42SWJY8iuqoaN99igLD45cFMtkMnsQ6N?embed=1&loadChartSettings=0&trades=0&tabs=0&info=1&chartLeftToolbar=0&chartTimeframesToolbar=0&loadChartSettings=0&chartDefaultOnMobile=0&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15';
+    const screenWidthThreshold = 640;
+
+
+    const debouncedUpdateIframe = debounce(() => updateIframeForSmallScreens(screenWidthThreshold, mobileUrl, desktopUrl), debounceDelay);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateIframeForSmallScreens(screenWidthThreshold, mobileUrl, desktopUrl);
+      window.addEventListener('resize', debouncedUpdateIframe);
+    });
+  </script>
 </body>
 
 </html>
