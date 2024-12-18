@@ -525,7 +525,8 @@ only screen and (                min-resolution: 2dppx) {
 
 
 .details-section a {
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-style: wavy;
   text-shadow: -2px -2px 0px #000, 2px 2px 10px #000;
 }
 
@@ -533,6 +534,7 @@ only screen and (                min-resolution: 2dppx) {
   color: #ffcb70;
   cursor: pointer;
   text-decoration: underline;
+  text-decoration-style: wavy;
 }
 
 .divider-bottom-details {
