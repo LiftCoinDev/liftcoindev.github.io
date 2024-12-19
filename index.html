@@ -126,7 +126,16 @@
         </div>
         <div>
           <h2>How to buy $LIFT</h2>
-          <div class="step-container">
+          <div class="roboto-light how-to-buy">
+            <p>Two ways to buy. <button id="basic-btn" class="text-btn active">Basic</button> | <button
+                id="advanced-btn" class="text-btn">Advanced</button>.
+              <button id="how-to-buy-toggle" class="symbol-btn">ⓘ</button>
+            </p>
+            <div id="how-to-buy-text">There are many ways to buy <strong>$LIFT</strong>.
+              If you are familiar with crypto wallets, SOLANA and meme coins, use your favorite tools and the links
+              provided here or the contract address above.</div>
+          </div>
+          <div id="advanced-steps" class="step-container">
             <div class="step">
               <div class="step-number">1</div>
               <div class="step-text roboto-bold">Have or create a Phantom wallet</div>
@@ -147,6 +156,21 @@
               <div class="step-number">4</div>
               <div class="step-text roboto-bold">Swap SOLANA for $LIFT</div>
             </div>
+          </div>
+          <div id="basic-steps" class="step-container active">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-text roboto-bold">Download the Phantom wallet app</div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-text roboto-bold">Buy SOLANA using the Phantom app</div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-text roboto-bold">Swap SOLANA for $LIFT</div>
+            </div>
+            <div></div>
           </div>
         </div>
         <div class="astro-lifter-container">
@@ -275,6 +299,34 @@
       updateIframeForSmallScreens(screenWidthThreshold, mobileUrl, desktopUrl);
       window.addEventListener('resize', debouncedUpdateIframe);
     });
+
+    const toggleHowToInfoBtn = document.getElementById('how-to-buy-toggle');
+    const howToInfoDiv = document.getElementById('how-to-buy-text');
+
+    toggleHowToInfoBtn.addEventListener('click', () => {
+      howToInfoDiv.classList.toggle('active');
+      toggleHowToInfoBtn.classList.toggle('active');
+    });
+
+    const basicBtn = document.getElementById('basic-btn');
+    const advancedBtn = document.getElementById('advanced-btn');
+    const basicContent = document.getElementById('basic-steps');
+    const advancedContent = document.getElementById('advanced-steps');
+
+    basicBtn.addEventListener('click', () => {
+      basicBtn.classList.add('active');
+      advancedBtn.classList.remove('active');
+      basicContent.classList.add('active');
+      advancedContent.classList.remove('active');
+    });
+
+    advancedBtn.addEventListener('click', () => {
+      advancedBtn.classList.add('active');
+      basicBtn.classList.remove('active');
+      advancedContent.classList.add('active');
+      basicContent.classList.remove('active');
+    });
+
   </script>
 </body>
 

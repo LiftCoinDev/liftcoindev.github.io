@@ -530,18 +530,12 @@ Details
   background-color: #111;
   display: flex;
   flex-direction: column;
-  padding-bottom: 120px;
+  padding-bottom: 160px;
 }
 
-@media (min-width: 280px) {
+@media (min-width: 380px) {
   .details-section {
     padding-bottom: 240px;
-  }
-}
-
-@media (min-width: 768px) {
-  .details-section {
-    padding-bottom: 120px;
   }
 }
 
@@ -562,18 +556,83 @@ only screen and (                min-resolution: 2dppx) {
 .details-section h2 {
   font-size: 2rem;
   letter-spacing: 2px;
-  padding-bottom: 32px;
   text-wrap: auto;
+  padding-bottom: 0px;
+}
+
+.how-to-buy {
+  padding-bottom: 16px;
+}
+
+.details-section p {
+  font-size: 1.1rem;
+  padding-bottom: 8px;
 }
 
 @media (min-width: 380px) {
+  .details-section p {
+    font-size: 1.2rem;
+  }
+}
+
+.text-btn {
+  all: unset;
+  color: #f3d198;
+  cursor: pointer;
+}
+
+.text-btn.active {
+  all: unset;
+  color: #f3d198;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+}
+
+.symbol-btn {
+  all: unset;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.symbol-btn.active {
+  all: unset;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #f3d198;
+  font-weight: 400;
+}
+
+.text-btn:hover, .symbol-btn:hover {
+  color: #ffcb70;
+}
+
+#how-to-buy-text {
+  max-height: 0;
+  overflow: hidden;
+  font-size: 0.9rem;
+  transition: max-height 0.4s ease-in-out;
+}
+
+#how-to-buy-text.active {
+  max-height: 100px;
+}
+
+@media (min-width: 380px) {
+  .details-section h2 {
+    font-size: 2.4rem;
+  }
+}
+
+@media (min-width: 420px) {
   .details-section h2 {
     font-size: 2.8rem;
   }
 }
 
-
 .details-section a {
+  color: #f3d198;
   text-decoration: underline;
   text-decoration-style: wavy;
   text-shadow: -2px -2px 0px #000, 2px 2px 10px #000;
@@ -585,6 +644,11 @@ only screen and (                min-resolution: 2dppx) {
   text-decoration: underline;
   text-decoration-style: wavy;
 }
+
+.details-section p a {
+  text-shadow: none;
+}
+
 
 .divider-bottom-details {
   position: absolute;
@@ -608,9 +672,15 @@ only screen and (                min-resolution: 2dppx) {
 }
 
 .step-container {
-  display: flex;
+  display: none;
+  transition: opacity 0.3s ease-in-out;
   flex-direction: column;
-  gap: 40px;
+  gap: 32px;
+}
+
+.step-container.active {
+  display: flex;
+  opacity: 1;
 }
 
 .step {
@@ -627,7 +697,6 @@ only screen and (                min-resolution: 2dppx) {
     text-align: left;
   }
 }
-
 
 .step-number {
   z-index: 2;
