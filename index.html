@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles-v26.css">
 </head>
 
 <body>
@@ -42,7 +42,7 @@
           <img class="textlogo" src="images/liftcoin-textlogo@1x.png"
             srcset="images/liftcoin-textlogo@2x.png 2x, images/liftcoin-textlogo@3x.png 3x" alt="Lift Coin Text Logo">
         </div>
-        <h2>The ultimate meme coin for gym goers and fitness enthusiasts.</h2>
+        <h2>The ultimate meme coin for <span class="shortened-tagline">gym goers and </span>fitness enthusiasts.</h2>
         <a href="https://jup.ag/swap/SOL-LIFT_CA1DBBpzdngS56VFuinJ4odQHYbeX51cLvXYGK6rP8Lq" target="_blank"
           rel="noopener noreferrer" class="buynow-btn">Buy on Jupiter
           <svg class="svg-icon-buynow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -109,9 +109,7 @@
           <p class="roboto-light">Data provided by <a
               href="https://dexscreener.com/solana/3k9rjeo5vjnb42swjy8iuqoan99igld45cfmtkmnsq6n" target="_blank"
               rel="noopener noreferrer">Dexscreener</a></p>
-          <div id="dexscreener-embed"><iframe
-              src="https://dexscreener.com/solana/3K9RjEo5vjnb42SWJY8iuqoaN99igLD45cFMtkMnsQ6N?embed=1&loadChartSettings=0&trades=0&tabs=0&info=1&chartLeftToolbar=0&chartTimeframesToolbar=0&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15"></iframe>
-          </div>
+          <div>New Chart and Stats Here</div>
         </div>
       </div>
     </section>
@@ -127,9 +125,9 @@
         <div>
           <h2>How to buy $LIFT</h2>
           <div class="roboto-light how-to-buy">
-            <p>Two ways to buy. <button id="basic-btn" class="text-btn active">Basic</button> | <button
-                id="advanced-btn" class="text-btn">Advanced</button>.
-              <button id="how-to-buy-toggle" class="symbol-btn">ⓘ</button>
+            <p>Two ways to buy. <span class="do-not-break"><button id="basic-btn" class="text-btn active">Basic</button>
+                | <button id="advanced-btn" class="text-btn">Advanced</button>.
+                <button id="how-to-buy-toggle" class="symbol-btn">ⓘ</button></span>
             </p>
             <div id="how-to-buy-text">There are many ways to buy <strong>$LIFT</strong>.
               If you are familiar with crypto wallets, SOLANA and meme coins, use your favorite tools and the links
@@ -298,40 +296,6 @@
   </div>
 
   <script>
-    // Resize for Dexscreen Chart
-    function debounce(func, delay) {
-      let timeout;
-      return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), delay);
-      };
-    }
-
-    function updateIframeForSmallScreens(screenWidthThreshold, mobileUrl, desktopUrl) {
-      const iframeContainer = document.getElementById('dexscreener-embed');
-      const iframe = iframeContainer ? iframeContainer.querySelector('iframe') : null;
-      if (iframe) {
-        if (window.innerWidth < screenWidthThreshold && iframe.src !== mobileUrl) {
-          iframe.src = mobileUrl;
-        } else if (window.innerWidth >= screenWidthThreshold && iframe.src !== desktopUrl) {
-          iframe.src = desktopUrl;
-        }
-      }
-    }
-
-    // Configuration variables
-    const debounceDelay = 200;
-    const desktopUrl = 'https://dexscreener.com/solana/3K9RjEo5vjnb42SWJY8iuqoaN99igLD45cFMtkMnsQ6N?embed=1&loadChartSettings=0&trades=0&tabs=0&info=1&chartLeftToolbar=0&chartTimeframesToolbar=0&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15';
-    const mobileUrl = 'https://dexscreener.com/solana/3K9RjEo5vjnb42SWJY8iuqoaN99igLD45cFMtkMnsQ6N?embed=1&loadChartSettings=0&trades=0&tabs=0&info=1&chartLeftToolbar=0&chartTimeframesToolbar=0&loadChartSettings=0&chartDefaultOnMobile=0&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15';
-    const screenWidthThreshold = 640;
-
-
-    const debouncedUpdateIframe = debounce(() => updateIframeForSmallScreens(screenWidthThreshold, mobileUrl, desktopUrl), debounceDelay);
-
-    document.addEventListener('DOMContentLoaded', () => {
-      updateIframeForSmallScreens(screenWidthThreshold, mobileUrl, desktopUrl);
-      window.addEventListener('resize', debouncedUpdateIframe);
-    });
 
     // How to Toggle
     const toggleHowToInfoBtn = document.getElementById('how-to-buy-toggle');
