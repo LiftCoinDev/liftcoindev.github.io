@@ -138,37 +138,56 @@
           <div id="advanced-steps" class="step-container">
             <div class="step">
               <div class="step-number">1</div>
-              <div class="step-text roboto-bold">Have or create a Phantom wallet</div>
+              <div class="step-text roboto-bold">
+                <p>Have or create a Phantom wallet</p>
+              </div>
             </div>
             <div class="step">
               <div class="step-number">2</div>
-              <div class="step-text roboto-bold">Buy SOLANA and send it your wallet</div>
+              <div class="step-text roboto-bold">
+                <p>Buy SOLANA and send it your wallet</p>
+              </div>
             </div>
             <div class="step">
               <div class="step-number">3</div>
-              <div class="step-text roboto-bold">Connect it to <a
-                  href="https://raydium.io/swap/?inputMint=sol&outputMint=CA1DBBpzdngS56VFuinJ4odQHYbeX51cLvXYGK6rP8Lq"
-                  target="_blank" rel="noopener noreferrer">Raydium</a> or <a
-                  href="https://jup.ag/swap/SOL-LIFT_CA1DBBpzdngS56VFuinJ4odQHYbeX51cLvXYGK6rP8Lq" target="_blank"
-                  rel="noopener noreferrer">Jupiter</a></div>
+              <div class="step-text roboto-bold">
+                <p>Connect it to <a
+                    href="https://raydium.io/swap/?inputMint=sol&outputMint=CA1DBBpzdngS56VFuinJ4odQHYbeX51cLvXYGK6rP8Lq"
+                    target="_blank" rel="noopener noreferrer">Raydium</a> or <a
+                    href="https://jup.ag/swap/SOL-LIFT_CA1DBBpzdngS56VFuinJ4odQHYbeX51cLvXYGK6rP8Lq" target="_blank"
+                    rel="noopener noreferrer">Jupiter</a></p>
+              </div>
             </div>
             <div class="step">
               <div class="step-number">4</div>
-              <div class="step-text roboto-bold">Swap SOLANA for $LIFT</div>
+              <div class="step-text roboto-bold">
+                <p>Swap SOLANA for $LIFT</p>
+              </div>
             </div>
           </div>
           <div id="basic-steps" class="step-container active">
             <div class="step">
               <div class="step-number">1</div>
-              <div class="step-text roboto-bold">Download the Phantom wallet app</div>
+              <div class="step-text roboto-bold">
+                <P>Download the Phantom wallet app</P>
+                <div class="play-row">
+                  <img class="play-red-btn" src="images/video-play@1x.png"
+                    srcset="images/video-play@2x.png 2x, images/video-play@3x.png 3x" alt="Play Phantom Wallet video">
+                  <button data-video-type="phantom" class="video-btn">How to setup Phantom</button>
+                </div>
+              </div>
             </div>
             <div class="step">
               <div class="step-number">2</div>
-              <div class="step-text roboto-bold">Buy SOLANA using the Phantom app</div>
+              <div class="step-text roboto-bold">
+                <p>Buy SOLANA using the Phantom app</p>
+              </div>
             </div>
             <div class="step">
               <div class="step-number">3</div>
-              <div class="step-text roboto-bold">Swap SOLANA for $LIFT</div>
+              <div class="step-text roboto-bold">
+                <p class="lift-outline">Swap SOLANA for $LIFT</p>
+              </div>
             </div>
             <div></div>
           </div>
@@ -264,8 +283,17 @@
       <div class="roboto-bold">Copyright &copy; LIFTCOIN 2025. All rights reserved</div>
     </div>
   </footer>
+  <div id="overlay" class="overlay">
+    <button id="closeModal">x</button>
+    <div id="modal" class="modal">
+      <video id="video" controls>
+        Your browser does not support this type of video playback.
+      </video>
+    </div>
+  </div>
 
   <script>
+    // Resize for Dexscreen Chart
     function debounce(func, delay) {
       let timeout;
       return function (...args) {
@@ -300,6 +328,7 @@
       window.addEventListener('resize', debouncedUpdateIframe);
     });
 
+    // How to Toggle
     const toggleHowToInfoBtn = document.getElementById('how-to-buy-toggle');
     const howToInfoDiv = document.getElementById('how-to-buy-text');
 
@@ -308,6 +337,7 @@
       toggleHowToInfoBtn.classList.toggle('active');
     });
 
+    // Toggle Basic or Advanced
     const basicBtn = document.getElementById('basic-btn');
     const advancedBtn = document.getElementById('advanced-btn');
     const basicContent = document.getElementById('basic-steps');
@@ -326,6 +356,72 @@
       advancedContent.classList.add('active');
       basicContent.classList.remove('active');
     });
+
+    // Video Modal
+    const openModalBtns = document.querySelectorAll('[data-video-type]');
+    const closeModalBtn = document.getElementById('closeModal');
+    const overlay = document.getElementById('overlay');
+    const video = document.getElementById('video');
+
+    // Video sources
+    const videoSourcesMap = {
+      phantom: [
+        { src: "/videos/PhantomWallet.mp4", type: "video/mp4" },
+        { src: "/videos/PhantomWallet.webm", type: "video/webm" }
+      ]
+    };
+
+    // Close modal and remove video sources
+    function closeOverlay() {
+      overlay.style.display = "none";
+      video.style.display = "none";
+
+      video.pause();
+      video.currentTime = 0;
+
+      while (video.firstChild) {
+        video.removeChild(video.firstChild);
+      }
+    }
+
+    // Open modal and dynamically add video sources based on data-video-type
+    openModalBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const videoType = btn.getAttribute('data-video-type');
+        const videoSources = videoSourcesMap[videoType];
+
+        if (videoSources) {
+          // Clear any existing video sources
+          while (video.firstChild) {
+            video.removeChild(video.firstChild);
+          }
+
+          // Add the new sources
+          videoSources.forEach(sourceData => {
+            const source = document.createElement('source');
+            source.src = sourceData.src;
+            source.type = sourceData.type;
+            video.appendChild(source);
+          });
+
+          video.load();
+          video.play();
+          overlay.style.display = "block";
+          video.style.display = "block";
+        }
+      });
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      closeOverlay()
+    });
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeOverlay();
+      }
+    });
+
 
   </script>
 </body>

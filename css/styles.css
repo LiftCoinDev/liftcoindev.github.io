@@ -582,7 +582,6 @@ only screen and (                min-resolution: 2dppx) {
 }
 
 .text-btn.active {
-  all: unset;
   color: #f3d198;
   font-weight: 400;
   cursor: pointer;
@@ -597,14 +596,19 @@ only screen and (                min-resolution: 2dppx) {
 }
 
 .symbol-btn.active {
-  all: unset;
   cursor: pointer;
   font-size: 1rem;
   color: #f3d198;
   font-weight: 400;
 }
 
-.text-btn:hover, .symbol-btn:hover {
+.video-btn {
+  all: unset;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.text-btn:hover, .symbol-btn:hover, .video-btn:hover {
   color: #ffcb70;
 }
 
@@ -716,11 +720,21 @@ only screen and (                min-resolution: 2dppx) {
 
 .step-text {
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-text p {
+  padding-bottom: 0px;
   font-family: "Roboto";
   color: #F3D198;
   font-size: 2rem;
   letter-spacing: 1px;
   line-height: 1.1;
+}
+
+.lift-outline {
+  text-shadow: 1px 1px rgba(0,0,0,0.8), -1px -1px 4px rgba(0,0,0,0.9);
 }
 
 .astro-lifter-container {
@@ -730,6 +744,25 @@ only screen and (                min-resolution: 2dppx) {
   bottom: 0px;
   right: 0px;
   max-width: 600px;
+}
+
+.play-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 380px) {
+  .play-row  {
+    justify-content: flex-start;
+  }
+}
+
+.play-red-btn {
+  width: 20px;
+  height: 20px;
 }
 
 @media (min-width: 640px) {
@@ -974,4 +1007,68 @@ footer {
   .divider-bottom-details {
     bottom: -1px;
   }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 999;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 92vh;
+  width: calc(92vh * 0.4615); /* Maintain aspect ratio */
+  overflow: hidden;
+}
+
+.modal.active {
+  display: block;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#closeModal {
+  all: unset;
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255,255,255,0.1);
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #FFF;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  z-index: 1000;
+}
+
+@media (max-width: 420px) {
+  #closeModal {
+    top: 0px;
+    right: 0px;
+  }
+}
+
+#closeModal:hover {
+  color: #F3D198;
+  border-color: #F3D198;
 }
