@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/styles-v28.css">
+  <link rel="stylesheet" href="css/styles-v29.css">
 </head>
 
 <body>
@@ -159,7 +159,7 @@
             <div class="step">
               <div class="step-number">4</div>
               <div class="step-text roboto-bold">
-                <p>Swap SOLANA for $LIFT</p>
+                <p class="lift-outline">Swap SOLANA for $LIFT</p>
               </div>
             </div>
           </div>
@@ -190,6 +190,12 @@
               <div class="step-number">3</div>
               <div class="step-text roboto-bold">
                 <p class="lift-outline">Swap SOLANA for $LIFT</p>
+                <div class="play-row">
+                  <img class="play-red-btn" src="images/video-play@1x.png"
+                    srcset="images/video-play@2x.png 2x, images/video-play@3x.png 3x"
+                    alt="Play Swap Solana for Lift video">
+                  <button data-video-type="swap" class="video-btn">How to swap for $LIFT</button>
+                </div>
               </div>
             </div>
             <div></div>
@@ -342,6 +348,10 @@
         { src: "/videos/BuyingSolana.mp4", type: "video/mp4" },
         { src: "/videos/BuyingSolana.webm", type: "video/webm" }
       ],
+      swap: [
+        { src: "/videos/SwapForLIFT.mp4", type: "video/mp4" },
+        { src: "/videos/SwapForLIFT.webm", type: "video/webm" }
+      ]
     };
 
     // Close modal and remove video sources
