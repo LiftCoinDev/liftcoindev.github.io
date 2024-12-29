@@ -264,7 +264,7 @@ nav a:hover {
 .hero-content h2 {
   color: rgba(255,255,255,0.95);
   max-width: 768px;
-  font-size: 1.6rem;
+  font-size: 2.4rem;
   text-align: center;
   letter-spacing: 2px;
   line-height: 1.1;
@@ -272,19 +272,15 @@ nav a:hover {
     2px 2px 4px rgba(0,0,0,0.6), -1px -1px 1px rgba(0,0,0,0.6);
 }
 
-.shortened-tagline {
-  display: none;
-}
-
-@media (min-width: 480px) {
+@media (min-width: 560px) {
   .hero-content h2 {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
   }
 }
 
-@media (min-width: 680px) {
-  .shortened-tagline {
-    display: inline;
+@media (min-width: 920px) {
+  .hero-content h2 {
+    font-size: 3.4rem;
   }
 }
 
@@ -322,15 +318,6 @@ nav a:hover {
 
 
 
-/* Media Query for Larger Screens */
-@media (min-width: 860px) {
-  .hero-content h2 {
-    font-size: 2.8rem;
-    
-  }
-}
-
-
 /*
 ABOUT
 */
@@ -339,11 +326,16 @@ ABOUT
   color: #614E33;
 }
 
+.about-div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .about-section h2 {
   font-size: 2rem;
   letter-spacing: 2px;
   line-height: 1;
-  padding-bottom: 12px;
 }
 
 @media (min-width: 380px) {
@@ -352,10 +344,30 @@ ABOUT
   }
 }
 
-.about-section p {
+.about-text {
   font-size: 1.4rem;
   letter-spacing: 0.2px;
 }
+
+.about-strong {
+  font-weight: 900;
+  font-family: 'BalooBhaijann', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.05px;
+}
+
+.about-subheading {
+  font-family: 'BalooBhaijann', sans-serif;
+  font-size: 1.7rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 400px) {
+  .about-subheading {
+    font-size: 1.8rem;
+  }
+}
+
 
 .about-section a {
   font-family: 'BalooBhaijann', sans-serif;
@@ -363,6 +375,16 @@ ABOUT
   font-size: 1.4rem;
   white-space: nowrap;
   text-decoration: none;
+}
+
+.about-section ol {
+  font-size: 1.4rem;
+  list-style-type: circle;
+  padding: 0px 0px 0px 18px;
+}
+
+.about-section ol li {
+  margin-top: 4px;
 }
 
 @media (max-width: 280px) {
