@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/styles-v32.css">
+  <link rel="stylesheet" href="css/styles-v33.css">
 </head>
 
 <body>
@@ -123,13 +123,6 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="chart-container">
-          <h2>Live Analytics</h2>
-          <p class="roboto-light">Data provided by <a
-              href="https://dexscreener.com/solana/3k9rjeo5vjnb42swjy8iuqoan99igld45cfmtkmnsq6n" target="_blank"
-              rel="noopener noreferrer">Dexscreener</a></p>
-          <div>New Chart and Stats Here</div>
         </div>
       </div>
     </section>
@@ -261,11 +254,12 @@
           </div>
           <div class="icon-container">
             <div class="icon-circle">
-              <img class="connect-icon" src="images/discord-logo@1x.png"
-                srcset="images/discord-logo@2x.png 2x, images/discord-logo@3x.png 3x" alt="Connect@Discord">
+              <img class="connect-icon" src="images/tiktok-logo@1x.png"
+                srcset="images/tiktok-logo@2x.png 2x, images/tiktok-logo@3x.png 3x" alt="Connect@TikTok">
             </div>
-            <div class="icon-title"><span>Discord</span></div>
-            <div class="icon-subtitle">Coming Soon!</div>
+            <div class="icon-title"><a href="https://www.tiktok.com/@liftcoinsol" target="_blank"
+                rel="noopener noreferrer">TikTok</a></div>
+            <div class="icon-subtitle">New for 2025</div>
           </div>
           <div class="icon-container">
             <div class="icon-circle">
@@ -278,7 +272,81 @@
             <div class="icon-subtitle">Coming soon!</div>
           </div>
         </div>
-        <div>
+        <div class="connect-bottom">
+          <div class="chart-container hide" id="stat-chart-container">
+            <h2>Check out our GAINZ</h2>
+            <div class="chart-box">
+              <div class="chart-headline-stats">
+                <div class="chart-headline-stat-item">
+                  <div>Market Cap</div>
+                  <div class="roboto-light" id="stat-market-cap"></div>
+                </div>
+                <div class="chart-headline-stat-item">
+                  <div>Current Price</div>
+                  <div class="roboto-light" id="stat-price"></div>
+                </div>
+              </div>
+              <div class="chart-volume-stats">
+                <div class="chart-volume-stat-item">
+                  <div>5m</div>
+                  <div class="roboto-light">
+                    <span class="volume-up-arrow hide" id="stat-5m-up">▲</span>
+                    <span class="volume-down-arrow hide" id="stat-5m-down">▼</span>
+                    <span id='stat-5m'></span>
+                  </div>
+                </div>
+                <div class="chart-volume-stat-item">
+                  <div>1h</div>
+                  <div class="roboto-light">
+                    <span class="volume-up-arrow hide" id="stat-1h-up">▲</span>
+                    <span class="volume-down-arrow hide" id="stat-1h-down">▼</span>
+                    <span id='stat-1h'></span>
+                  </div>
+                </div>
+                <div class="chart-volume-stat-item chart-hide-small">
+                  <div>6h</div>
+                  <div class="roboto-light">
+                    <span class="volume-up-arrow hide" id="stat-6h-up">▲</span>
+                    <span class="volume-down-arrow hide" id="stat-6h-down">▼</span>
+                    <span id='stat-6h'></span>
+                  </div>
+                </div>
+                <div class="chart-volume-stat-item chart-hide-small">
+                  <div>24h</div>
+                  <div class="roboto-light">
+                    <span class="volume-up-arrow hide" id="stat-24h-up">▲</span>
+                    <span class="volume-down-arrow hide" id="stat-24h-down">▼</span>
+                    <span id='stat-24h'></span>
+                  </div>
+                </div>
+              </div>
+              <div class="chart-buysell-stats">
+                <div class="chart-buysell-titlerow">
+                  24 Hour Volume
+                </div>
+                <div class="chart-buysell-headingrow">
+                  <div>Buys</div>
+                  <div class="roboto-light text-small" id="stat-24h-usd"></div>
+                  <div>Sells</div>
+                </div>
+                <div class="chart-buysell-subheadingrow">
+                  <div class="roboto-light text-small" id="stat-buys"></div>
+                  <div class="roboto-light text-small" id="stat-sells"></div>
+                </div>
+                <div class="chart-buysell-linegraph" id="buysell-linegraph">
+                  <div class="chart-buysell-linegraph-buy"></div>
+                  <div class="chart-buysell-linegraph-sell"></div>
+                </div>
+                <div class="chart-box-footer">
+                  <div class="chart-box-footer-wrapper">
+                    <span class="roboto-light text-smaller">Data provided by </span><a
+                      href="https://dexscreener.com/solana/3k9rjeo5vjnb42swjy8iuqoan99igld45cfmtkmnsq6n" target="_blank"
+                      rel="noopener noreferrer">Dexscreener</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <h4 class="roboto-light">Explore <strong>$LIFT</strong> on the <strong>SOLANA</strong> blockchain.</h4>
           <div class="tool-icon-row">
             <a href="https://www.geckoterminal.com/solana/pools/3K9RjEo5vjnb42SWJY8iuqoaN99igLD45cFMtkMnsQ6N?utm_source=coingecko&utm_medium=referral&utm_campaign=searchresults"
@@ -293,7 +361,6 @@
             <a href="https://dexscreener.com/solana/3k9rjeo5vjnb42swjy8iuqoan99igld45cfmtkmnsq6n" target="_blank"
               rel="noopener noreferrer"><img class="tool-icon dexscreener-logo" src="images/dex-screener-logo@1x.png"
                 srcset="images/dex-screener-logo@2x.png 2x, images/dex-screener-logo@3x.png 3x" alt="DexScreener"></a>
-
           </div>
         </div>
       </div>
@@ -376,6 +443,7 @@
 
     // Close modal and remove video sources
     function closeOverlay() {
+      document.body.classList.remove('no-scroll');
       overlay.style.display = "none";
       video.style.display = "none";
 
@@ -411,6 +479,7 @@
           video.play();
           overlay.style.display = "block";
           video.style.display = "block";
+          document.body.classList.add('no-scroll');
         }
       });
     });
@@ -425,7 +494,87 @@
       }
     });
 
+    // Simulated API Data
+    const sucessFetch = false;
+    const marketCap = 1040001;
+    const price = 0.000004070;
+    const volume5m = -0.55;
+    const volume1h = 6.2;
+    const volume6h = 5.4;
+    const volume24h = -2.1;
+    const volume24hUSD = 6250.82;
+    const buys24h = 363;
+    const sells24h = 346;
 
+    // Propogate Stat Table
+    const statContainer = document.getElementById('stat-chart-container');
+    if (sucessFetch) {
+      statContainer.classList.remove('hide');
+    }
+
+    // Market Cap and Price
+    const statMarketCap = document.getElementById('stat-market-cap');
+    const statPrice = document.getElementById('stat-price');
+
+    statMarketCap.textContent = `$${marketCap.toLocaleString()}`;
+    statPrice.textContent = `$${price}`;
+
+    // Volume
+    const thresholdForArrow = 0.5;
+    const stat5m = document.getElementById('stat-5m');
+    const stat5mUp = document.getElementById('stat-5m-up');
+    const stat5mDown = document.getElementById('stat-5m-down');
+    const stat1h = document.getElementById('stat-1h');
+    const stat1hUp = document.getElementById('stat-1h-up');
+    const stat1hDown = document.getElementById('stat-1h-down');
+    const stat6h = document.getElementById('stat-6h');
+    const stat6hUp = document.getElementById('stat-6h-up');
+    const stat6hDown = document.getElementById('stat-6h-down');
+    const stat24h = document.getElementById('stat-24h');
+    const stat24hUp = document.getElementById('stat-24h-up');
+    const stat24hDown = document.getElementById('stat-24h-down');
+
+    stat5m.textContent = `${Math.abs(volume5m)}%`;
+    if (volume5m > thresholdForArrow) {
+      stat5mUp.classList.remove('hide');
+    } else if (volume5m < -thresholdForArrow) {
+      stat5mDown.classList.remove('hide');
+    }
+
+    stat1h.textContent = `${Math.abs(volume1h)}%`;
+    if (volume1h > thresholdForArrow) {
+      stat1hUp.classList.remove('hide');
+    } else if (volume1h < -thresholdForArrow) {
+      stat1hDown.classList.remove('hide');
+    }
+
+    stat6h.textContent = `${Math.abs(volume6h)}%`;
+    if (volume6h > thresholdForArrow) {
+      stat6hUp.classList.remove('hide');
+    } else if (volume6h < -thresholdForArrow) {
+      stat6hDown.classList.remove('hide');
+    }
+
+    stat24h.textContent = `${Math.abs(volume24h)}%`;
+    if (volume24h > thresholdForArrow) {
+      stat24hUp.classList.remove('hide');
+    } else if (volume24h < -thresholdForArrow) {
+      stat24hDown.classList.remove('hide');
+    }
+
+    // Buy Sell with Line Chart
+    const buyPercent = Math.round(buys24h / (buys24h + sells24h) * 100);
+    const sellPercent = Math.round(sells24h / (buys24h + sells24h) * 100);
+    const stat24hUSD = document.getElementById('stat-24h-usd');
+    const statBuys = document.getElementById('stat-buys');
+    const statSells = document.getElementById('stat-sells');
+    const linegraph = document.getElementById('buysell-linegraph');
+
+    stat24hUSD.textContent = `$${volume24hUSD.toLocaleString()}`;
+    statBuys.textContent = buys24h;
+    statSells.textContent = sells24h;
+
+    linegraph.style.gridTemplateColumns = `${buyPercent}% ${sellPercent}%`;
   </script>
 </body>
 
