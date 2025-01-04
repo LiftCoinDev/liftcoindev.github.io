@@ -574,7 +574,7 @@ ABOUT
 }
 
 .volume-up-arrow {
-  color: #00da01;
+  color: #1fa531;
   font-size: 1rem;
 }
 
@@ -626,7 +626,7 @@ ABOUT
 }
 
 .chart-buysell-linegraph-buy {
-  background-color: #04da04;
+  background-color: #1fa531;
   height: 8px;
 }
 
@@ -969,24 +969,16 @@ Connect
   font-size: 2.5rem;
   letter-spacing: 2px;
   line-height: 1.1;
-  padding-bottom: 24px;
+  padding-bottom: 8px;
   text-shadow: 2px 2px rgba(0, 0, 0, 0.9);
-}
-
-.connect-section h3 {
-  text-align: center;
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-  line-height: 1.25;
 }
 
 .connect-section h4 {
   text-align: center;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-  line-height: 1.25;
-  padding-top: 24px;
+  font-size: 1.6rem;
+  padding-top: 12px;
   padding-bottom: 36px;
+  text-wrap: auto;
 }
 
 @media (min-width: 320px) {
@@ -999,17 +991,42 @@ Connect
   .connect-section h2 {
     font-size: 3.6rem;
   }
-  .connect-section h3 {
-    font-size: 1.6rem;
-  }
-  .connect-section h4 {
-    font-size: 1.6rem;
+}
+
+.holders-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  font-weight: 100;
+}
+
+.holders-tag {
+  font-family: "BalooBhaijann", sans-serif;
+  background-color: #1fa531;
+  padding: 0px 8px;
+  border-radius: 12px;
+  margin-right: 8px;
+  text-shadow: 1px 2px rgba(0, 0, 0, 0.9);
+  text-transform: uppercase;
+}
+
+@media (min-width: 340px) {
+  .holders-div {
+    font-size: 1.3rem;
   }
 }
 
-@media (min-width: 640px) {
-  .connect-section h3 {
-    font-size: 1.8rem;
+@media (min-width: 480px) {
+  .holders-div {
+    font-size: 1.6rem;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .holders-tag {
+    padding: 0px 12px;
   }
 }
 

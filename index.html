@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/styles-v33.css">
+  <link rel="stylesheet" href="css/styles-v34.css">
 </head>
 
 <body>
@@ -231,7 +231,12 @@
       <div class="container">
         <div>
           <h2>Let’s be SWOLEmates</h2>
-          <h3 class="roboto-light">Join the growing <strong>$LIFT</strong> community!</h3>
+          <div class="holders-div roboto-regular hide" id="holder-count"><span class="holders-tag"
+              id="num-holders-7d"></span> holders
+            this week!</div>
+          <div class="holders-div roboto-light hide" id="holder-alt">Join the
+            growing&nbsp;<strong>$LIFT</strong>&nbsp;community!
+          </div>
         </div>
         <div class="icon-row">
           <div class="icon-container">
@@ -494,7 +499,45 @@
       }
     });
 
-    // Simulated API Data
+    // Market Cap and Price
+    const holderCount = document.getElementById('holder-count');
+    const holderAltText = document.getElementById('holder-alt');
+    const holder7d = document.getElementById('num-holders-7d');
+
+    // FETCH Current Holders and last 24h and 7d
+    async function fetchHolderData() {
+      try {
+        // Fetch data from the endpoint
+        const response = await fetch('https://api.liftcoin.io/get-snapshot');
+        console.log('Response received:', response);
+        if (!response.ok) throw new Error('Failed to fetch Wallet Holder API data');
+
+        const data = await response.json();
+
+        // Destructure the response data
+        const { currentHolders, newHolders7d } = data;
+
+        // Update the UI based on the fetched data
+        if (newHolders7d > 0) {
+          holder7d.textContent = `+${newHolders7d} New`;
+          holderAltText.classList.add('hide');
+          holderCount.classList.remove('hide');
+        } else {
+          holderCount.classList.add('hide');
+          holderAltText.classList.remove('hide');
+        }
+
+      } catch (error) {
+        console.error('Error fetching holder data:', error);
+
+        // Fallback UI update in case of an error
+        holderCount.classList.add('hide');
+        holderAltText.classList.remove('hide');
+      }
+    }
+    fetchHolderData();
+
+    // Simulated Market API Data
     const sucessFetch = false;
     const marketCap = 1040001;
     const price = 0.000004070;
