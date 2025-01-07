@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/styles-v35.css">
+  <link rel="stylesheet" href="css/styles-v36.css">
 </head>
 
 <body>
@@ -32,7 +32,7 @@
         <nav aria-label="Main Navigation">
           <ul>
             <li><a href="#about">About</a></li>
-            <li><a href="#details">Where to Buy</a></li>
+            <li><a href="#details">How to Buy</a></li>
             <li><a href="#connect">Socials</a></li>
           </ul>
         </nav>
@@ -509,7 +509,6 @@
       try {
         // Fetch data from the endpoint
         const response = await fetch('https://api.liftcoin.io/get-snapshot-holders');
-        console.log('Response received:', response);
         if (!response.ok) throw new Error('Failed to fetch Wallet Holder API data');
 
         const data = await response.json();
@@ -537,33 +536,13 @@
     }
     fetchHolderData();
 
-    // Simulated Market API Data
-    const sucessFetch = false;
-    const marketCap = 1040001;
-    const price = 0.000004070;
-    const volume5m = -0.55;
-    const volume1h = 6.2;
-    const volume6h = 5.4;
-    const volume24h = -2.1;
-    const volume24hUSD = 6250.82;
-    const buys24h = 363;
-    const sells24h = 346;
-
-    // Propogate Stat Table
+    // Market API
+    const thresholdForArrow = 0.1;
     const statContainer = document.getElementById('stat-chart-container');
-    if (sucessFetch) {
-      statContainer.classList.remove('hide');
-    }
-
-    // Market Cap and Price
     const statMarketCap = document.getElementById('stat-market-cap');
     const statPrice = document.getElementById('stat-price');
 
-    statMarketCap.textContent = `$${marketCap.toLocaleString()}`;
-    statPrice.textContent = `$${price}`;
 
-    // Volume
-    const thresholdForArrow = 0.5;
     const stat5m = document.getElementById('stat-5m');
     const stat5mUp = document.getElementById('stat-5m-up');
     const stat5mDown = document.getElementById('stat-5m-down');
@@ -576,48 +555,91 @@
     const stat24h = document.getElementById('stat-24h');
     const stat24hUp = document.getElementById('stat-24h-up');
     const stat24hDown = document.getElementById('stat-24h-down');
-
-    stat5m.textContent = `${Math.abs(volume5m)}%`;
-    if (volume5m > thresholdForArrow) {
-      stat5mUp.classList.remove('hide');
-    } else if (volume5m < -thresholdForArrow) {
-      stat5mDown.classList.remove('hide');
-    }
-
-    stat1h.textContent = `${Math.abs(volume1h)}%`;
-    if (volume1h > thresholdForArrow) {
-      stat1hUp.classList.remove('hide');
-    } else if (volume1h < -thresholdForArrow) {
-      stat1hDown.classList.remove('hide');
-    }
-
-    stat6h.textContent = `${Math.abs(volume6h)}%`;
-    if (volume6h > thresholdForArrow) {
-      stat6hUp.classList.remove('hide');
-    } else if (volume6h < -thresholdForArrow) {
-      stat6hDown.classList.remove('hide');
-    }
-
-    stat24h.textContent = `${Math.abs(volume24h)}%`;
-    if (volume24h > thresholdForArrow) {
-      stat24hUp.classList.remove('hide');
-    } else if (volume24h < -thresholdForArrow) {
-      stat24hDown.classList.remove('hide');
-    }
-
-    // Buy Sell with Line Chart
-    const buyPercent = Math.round(buys24h / (buys24h + sells24h) * 100);
-    const sellPercent = Math.round(sells24h / (buys24h + sells24h) * 100);
     const stat24hUSD = document.getElementById('stat-24h-usd');
     const statBuys = document.getElementById('stat-buys');
     const statSells = document.getElementById('stat-sells');
     const linegraph = document.getElementById('buysell-linegraph');
 
-    stat24hUSD.textContent = `$${volume24hUSD.toLocaleString()}`;
-    statBuys.textContent = buys24h;
-    statSells.textContent = sells24h;
+    // FETCH Current Marker Data via Dexscreener 
+    async function fetchMarketData() {
+      try {
+        // Fetch data from the endpoint
+        const response = await fetch('https://api.liftcoin.io/get-market');
+        if (!response.ok) throw new Error('Failed to fetch Market API data');
 
-    linegraph.style.gridTemplateColumns = `${buyPercent}% ${sellPercent}%`;
+        const data = await response.json();
+
+        // Destructure the response data
+        const { priceUsd, marketCap, m5priceChange, h1priceChange, h6priceChange, h24priceChange, h24volume, h24buys, h24sells } = data;
+
+        // Check if all values are numbers and exist
+        const areAllNumbers = [
+          priceUsd,
+          marketCap,
+          m5priceChange,
+          h1priceChange,
+          h6priceChange,
+          h24priceChange,
+          h24volume,
+          h24buys,
+          h24sells
+        ].every(value => typeof value === 'number');
+
+        if (!areAllNumbers) {
+          throw new Error('Some market data missing orimproperly formatted. Not rendering stat table.');
+        }
+
+        // Market Cap and Price
+        statMarketCap.textContent = `$${marketCap.toLocaleString()}`;
+        statPrice.textContent = `$${priceUsd}`;
+
+        // Volume
+        stat5m.textContent = `${Math.abs(m5priceChange)}%`;
+        if (m5priceChange > thresholdForArrow) {
+          stat5mUp.classList.remove('hide');
+        } else if (m5priceChange < -thresholdForArrow) {
+          stat5mDown.classList.remove('hide');
+        }
+
+        stat1h.textContent = `${Math.abs(h1priceChange)}%`;
+        if (h1priceChange > thresholdForArrow) {
+          stat1hUp.classList.remove('hide');
+        } else if (h1priceChange < -thresholdForArrow) {
+          stat1hDown.classList.remove('hide');
+        }
+
+        stat6h.textContent = `${Math.abs(h6priceChange)}%`;
+        if (h6priceChange > thresholdForArrow) {
+          stat6hUp.classList.remove('hide');
+        } else if (h6priceChange < -thresholdForArrow) {
+          stat6hDown.classList.remove('hide');
+        }
+
+        stat24h.textContent = `${Math.abs(h24priceChange)}%`;
+        if (h24priceChange > thresholdForArrow) {
+          stat24hUp.classList.remove('hide');
+        } else if (h24priceChange < -thresholdForArrow) {
+          stat24hDown.classList.remove('hide');
+        }
+
+        // Buy Sell with Line Chart
+        const buyPercent = Math.round(h24buys / (h24buys + h24sells) * 100);
+        const sellPercent = Math.round(h24sells / (h24buys + h24sells) * 100);
+        stat24hUSD.textContent = `$${h24volume.toLocaleString()}`;
+        statBuys.textContent = h24buys;
+        statSells.textContent = h24sells;
+        linegraph.style.gridTemplateColumns = `${buyPercent}% ${sellPercent}%`;
+
+        // Propogate Stat Table
+        statContainer.classList.remove('hide');
+
+      } catch (error) {
+        console.error('Error fetching holder data:', error);
+        // Fallback UI update in case of an error
+        statContainer.classList.add('hide');
+      }
+    }
+    fetchMarketData();
   </script>
 </body>
 

@@ -974,6 +974,7 @@ Connect
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 24px;
 }
 
 .connect-section h2 {
